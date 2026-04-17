@@ -7,5 +7,99 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #ffffff;
     color: #1D1D1F;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ── Step transition animations ──────────────────────────────────────── */
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.anim-slide-right {
+  animation: slideInFromRight 350ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.anim-slide-left {
+  animation: slideInFromLeft 350ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* ── Ambiance sliders : hide native thumb (custom thumb rendered in JSX) ─ */
+
+.ambiance-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 48px;
+  height: 32px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ambiance-slider::-moz-range-thumb {
+  width: 48px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* ── Print / PDF styles ───────────────────────────────────────────────── */
+
+@media print {
+  body {
+    background: white !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  #summary-page {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm 25mm !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+
+  #summary-page * {
+    visibility: visible;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
   }
 }

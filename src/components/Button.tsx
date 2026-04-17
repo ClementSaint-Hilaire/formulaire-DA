@@ -19,7 +19,7 @@ const sizeStyles: Record<Size, string> = {
 
 const variantStyles: Record<Variant, string> = {
   primary: 'bg-[#1D1D1F] text-[#F7F5F5] hover:bg-[#2d2d30]',
-  secondary: 'bg-transparent text-[#1D1D1F] border border-[#1D1D1F] hover:bg-[#1D1D1F] hover:text-[#F7F5F5]',
+  secondary: 'bg-[#e5e5e5] text-[#1D1D1F] hover:bg-[#d5d5d5]',
 }
 
 function ArrowIcon({ color }: { color: string }) {
@@ -51,7 +51,7 @@ export function Button({
   iconStart = false,
   iconEnd = false,
   disabled,
-  className = '',
+  className = 'w-fit',
   ...props
 }: ButtonProps) {
   const iconColor = variant === 'primary' ? '#F7F5F5' : '#1D1D1F'
@@ -60,7 +60,7 @@ export function Button({
     <button
       disabled={disabled}
       className={[
-        'inline-flex items-center rounded-lg font-medium transition-colors duration-150',
+        'inline-flex font-medium items-center rounded-lg transition-colors duration-150 cursor-pointer',
         'disabled:opacity-40 disabled:cursor-not-allowed',
         sizeStyles[size],
         variantStyles[variant],
